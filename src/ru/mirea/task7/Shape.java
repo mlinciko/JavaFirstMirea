@@ -100,8 +100,33 @@ class Rectangle extends Shape{
     }
 }
 class Square extends Shape{
+    protected double side;
     public Square(){
         super();
-
+        this.side = 0;
+    }
+    public Square(double side){
+        super();
+        this.side = side;
+    }
+    public Square(double side, String color, boolean filled){
+        super(color,filled);
+        this.side = side;
+    }
+    public double getSide(){
+        return this.side;
+    }
+    public void setSide(double side){
+        this.side = side;
+    }
+    public double getArea(){
+        return Math.pow(this.side,2);
+    }
+    public double getPerimeter(){
+        return (this.side)*2;
+    }
+    public String toString(){
+        return "Color: "+super.getColor()+", Filled: "+super.isFilled()+", Side: "+ this.side+ ", Area: "+this.getArea()+", Perimeter: " + this.getPerimeter();
     }
 }
+
