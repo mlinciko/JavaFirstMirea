@@ -7,7 +7,7 @@ import javax.swing.JFrame;
  * @author DarkRaha
  *
  */
-public class MyWin extends JFrame {
+/*public class MyWin extends JFrame {
 
     // серийный номер класса
     private static final long serialVersionUID = 1L;
@@ -36,5 +36,5 @@ public class MyWin extends JFrame {
     public static void main(String args[]) {
         new MyWin();
     }
-}
+}*/
 
