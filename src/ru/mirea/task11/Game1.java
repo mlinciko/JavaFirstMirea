@@ -1,20 +1,21 @@
 package ru.mirea.task11;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Game extends JFrame {
+public class Game1 extends JFrame {
     //надпись
     JLabel label = new JLabel("Угадайте число от 0 до 20");
     // Текстовые поля
     JTextField digit;
+    int count = 0;
 
-    public Game() {
+    public Game1() {
         super("Угадайка");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        //setLayout(new GridLayout(2,1));
         //Создание рандомного числа от 0 до 20
         int random_digit = (int)(Math.random()*20)+0;
         System.out.println(random_digit);
@@ -22,31 +23,32 @@ public class Game extends JFrame {
         // Создание текстовых полей
         digit = new JTextField(15);
         digit.setToolTipText("Короткое поле");
+
+
         // Слушатель окончания ввода
         digit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // в переменную присваивается введенный текст
                 int input_digit = Integer.parseInt(digit.getText());
-                int count = 0;
-                while(count != 4) {
-                    //выход из игры
-                    if(count == 3){
-                        JOptionPane.showMessageDialog(Game.this,
-                                "Game over!");
-                        break;
-                    }
-                    // Отображение введенного текста
-                    if (random_digit == input_digit) {
-                        JOptionPane.showMessageDialog(Game.this,
-                                "Вы угадали! Число " + input_digit);
-                    } else if (random_digit > input_digit) {
-                        JOptionPane.showMessageDialog(Game.this,
-                                "Вы ошиблись! Число должно быть больше");
-                    } else if (random_digit < input_digit) {
-                        JOptionPane.showMessageDialog(Game.this,
-                                "Вы ошиблись! Число должно быть меньше");
-                    }
-                    count ++;
+                count++;
+
+                if(count == 3){
+                    JOptionPane.showMessageDialog(Game1.this,
+                            "Game over!");
+                    dispose();
+                }
+                // Отображение введенного текста
+                else if (random_digit == input_digit){
+                    JOptionPane.showMessageDialog(Game1.this,
+                            "Вы угадали! Число " + input_digit);
+                    dispose();
+
+                } else if (random_digit > input_digit) {
+                    JOptionPane.showMessageDialog(Game1.this,
+                            "Вы ошиблись! Число должно быть больше");
+                } else if (random_digit < input_digit) {
+                    JOptionPane.showMessageDialog(Game1.this,
+                            "Вы ошиблись! Число должно быть меньше");
                 }
             }
         });
@@ -62,6 +64,6 @@ public class Game extends JFrame {
         setVisible(true);
     }
     public static void main(String[] args) {
-        new Game();
+        new Game1();
     }
 }
