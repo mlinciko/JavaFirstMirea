@@ -1,4 +1,6 @@
-package ru.mirea.task18;
+package ru.mirea.task19;
+
+
 class Services{
     private String choice;
     Services(String choice){
@@ -8,7 +10,8 @@ class Services{
         return this.choice;
     }
 }
-public class HandleError {
+
+public class SuperSubCatch {
     public static void main(String[] args){
         Services services = null;
         try{
@@ -16,9 +19,9 @@ public class HandleError {
         }
         catch (NullPointerException e){
             System.out.println("Вы не выбрали услугу");
-            services = new Services("Pediatrician");
         }
-        System.out.println("Исключение обработано");
-        System.out.println("Услуга по умолчанию: "+services.getChoice());
+        catch (Exception e){
+            System.out.println("Исключение общего вида");
+        }
     }
 }

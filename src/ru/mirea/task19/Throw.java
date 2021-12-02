@@ -1,4 +1,5 @@
-package ru.mirea.task18;
+package ru.mirea.task19;
+
 
 class Date{
     private String date;
@@ -13,18 +14,12 @@ class Date{
     }
 }
 
-public class MethNestedTry {
-    public static void checkDate(Date date){
-        try {
-            System.out.println("Вы выбрали дату: " + date.getDate());
-        }catch (NullPointerException e){
-            System.out.println("Исключение");
-        }
-    }
+public class Throw {
     public static void main(String[] args){
         Date date = null;
         try{
-            checkDate(date);
+            System.out.println("Вы выбрали дату: " + date.getDate());
+            throw new NullPointerException("поле date неинициализировано");
         }catch(NullPointerException e){
             System.out.println("Вы не выбрали дату");
         }
